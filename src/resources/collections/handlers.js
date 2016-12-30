@@ -42,7 +42,7 @@ class CollectionIdHandler {
      * Process GET request
      */
     static async get(request, reply) {
-        let collection = await Collection.get(request.params.collectionId);    
+        let collection = await Collection.get(request.params.collectionId);
         // Note: Only authenticated Admins can see collections that are not enabled
         let isAdmin = request.auth.credentials && request.auth.credentials.scope && request.auth.credentials.scope.indexOf('admin') !== -1;
         if (collection && (collection.enabled === true || isAdmin)) {

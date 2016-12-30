@@ -100,7 +100,7 @@ class User {
     @DBDecorators.table(tables.User)
     static async markTokenAsUsed(userId, token) {
         log.debug({userId, token}, 'Marking token as used');
-        
+
         let user = await User.get(userId);
         let ct = user.confirmationTokens.find(o => o.token === token);
         if (!ct) {
@@ -110,7 +110,7 @@ class User {
         } else {
             ct.usedAt = new Date();
         }
-        
+
         await this.table.get(user.id).update(function (row) {
             return {
                 confirmationTokens: row('confirmationTokens').filter(function (confirmationToken) {

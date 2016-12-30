@@ -131,12 +131,12 @@ class Order {
      */
     @DBDecorators.table(tables.Order)
     static async updateStatus(orderId, status, description, details) {
-        
+
         // Validate status
         if (Object.keys(OrderStatus).map(function (key) { return OrderStatus[key]; }).indexOf(status) == -1) {
             throw new ValidationError('status', 'Invalid');
         }
-        
+
         // Update status
         let now = new Date();
         await this.table.get(orderId).update({

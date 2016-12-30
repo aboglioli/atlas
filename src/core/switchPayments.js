@@ -20,13 +20,13 @@ const Events = {
  * Switch Payments API wrapper
  */
 class SwitchPayments {
-    
+
     constructor(baseUrl, accountId, privateKey) {
         this.baseUrl = baseUrl;
         this.accountId = accountId;
         this.privateKey = privateKey;
     }
-    
+
     processEvent(eventId, handlers) {
         request.get({
             url: `${this.baseUrl}/events/${eventId}`,

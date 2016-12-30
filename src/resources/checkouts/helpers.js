@@ -30,7 +30,7 @@ async function isReady(checkout) {
     if (Object.keys(checkout.billingAddress).length > 0 && checkout.paymentMethod && checkout.paymentMethod !== '') {
         hasBillingInformation = true;
     }
-    
+
     // Check product availability
     let hasStock = await Product.hasStock(checkout.cart);
 

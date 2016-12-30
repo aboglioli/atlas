@@ -8,7 +8,7 @@ import request from 'request';
  * @param args - required and optional parameters
  */
 export default async function handle(args) {
-    
+
     // Validate required parameters
     if (args.length < 2) {
         console.log('Usage: clearImages <api_base_url> <jwt>');
@@ -16,7 +16,7 @@ export default async function handle(args) {
     }
     let apiBaseURL = args[0];
     let jwt = args[1];
-    
+
     // Make request
     console.log('Making request to API');
     request.post({

@@ -111,7 +111,7 @@ export default [
                     }).required(),
                     description: Joi.object().optional(),
                     tags: Joi.array().required(),
-                    images: Joi.array({
+                    images: Joi.array().items({
                         url: Joi.string().required()
                     }).required(),
                     parentId: Joi.any().optional(),

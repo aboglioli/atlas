@@ -115,7 +115,7 @@ export default [
                         en: Joi.string().required(),
                         pt: Joi.string().required()
                     }).required(),
-                    images: Joi.array({
+                    images: Joi.array().items({
                         url: Joi.string().required()
                     }).required(),
                     pricing: Joi.object({

@@ -19,7 +19,7 @@ class ProductSerializer {
             en: Joi.string(),
             pt: Joi.string()
         }),
-        images: Joi.array({
+        images: Joi.array().items({
             url: Joi.string()
         }),
         pricing: Joi.object({

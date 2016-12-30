@@ -121,7 +121,7 @@ export default [
                     tags: Joi.array().required(),
                     metadata: Joi.object().required(),
                     body: Joi.object().required(),
-                    images: Joi.array({
+                    images: Joi.array().items({
                         url: Joi.string().required()
                     }).required()
                 }

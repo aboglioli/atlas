@@ -1,4 +1,6 @@
-import {buildRoutes} from './core/routeHelpers';
+import {
+  buildRoutes
+} from './core/routeHelpers';
 import config from './config';
 
 import accountRoutes from './resources/account/routes';
@@ -14,13 +16,13 @@ import userRoutes from './resources/users/routes';
 const routePrefix = config.app.routePrefix || '';
 
 export default buildRoutes({
-    [`${routePrefix}/v1/account`]: accountRoutes,
-    [`${routePrefix}/v1/carts`]: cartRoutes,
-    [`${routePrefix}/v1/checkouts`]: checkoutRoutes,
-    [`${routePrefix}/v1/collections`]: collectionRoutes,
-    [`${routePrefix}/v1/contents`]: contentRoutes,
-    [`${routePrefix}/v1/files`]: fileRoutes,
-    [`${routePrefix}/v1/orders`]: orderRoutes,
-    [`${routePrefix}/v1/products`]: productRoutes,
-    [`${routePrefix}/v1/users`]: userRoutes
+  [`${routePrefix}/v1/account`]: accountRoutes,
+  [`${routePrefix}/v1/carts`]: cartRoutes,
+  [`${routePrefix}/v1/checkouts`]: checkoutRoutes,
+  [`${routePrefix}/v1/collections`]: collectionRoutes,
+  [`${routePrefix}/v1/contents`]: contentRoutes,
+  [`${routePrefix}/v1/files`]: fileRoutes,
+  [`${routePrefix}/v1/orders`]: orderRoutes,
+  [`${routePrefix}/v1/products`]: productRoutes,
+  [`${routePrefix}/v1/users`]: userRoutes
 });

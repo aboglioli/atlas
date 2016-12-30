@@ -1,6 +1,6 @@
 /**
-* Imports
-*/
+ * Imports
+ */
 import fs from 'fs';
 import path from 'path';
 import uuid from 'node-uuid';
@@ -9,13 +9,13 @@ import config from '../../config';
 import log from './logging';
 
 /**
-* Processes an uploaded file by saving it to the configured place (locally, S3, etc)
-* and by returning the full URL path to it
-* @param resource - The API resource in which context this file was uploaded
-* @param file - The file being uploaded
-*/
+ * Processes an uploaded file by saving it to the configured place (locally, S3, etc)
+ * and by returning the full URL path to it
+ * @param resource - The API resource in which context this file was uploaded
+ * @param file - The file being uploaded
+ */
 function processUpload(resource, file) {
-  return new Promise(async function (resolve, reject) {
+  return new Promise(async function(resolve, reject) {
 
     if (config.uploads.provider !== 'atlas') {
       return reject({
@@ -29,14 +29,14 @@ function processUpload(resource, file) {
 
     // Open file for writing
     let fileStream = fs.createWriteStream(path.join(folder, name));
-    fileStream.on('error', function (err) {
+    fileStream.on('error', function(err) {
       return reject(err);
     });
 
     // Wait for stream to return "open" event, before writing to respective file
-    fileStream.on('open', function (fd) {
+    fileStream.on('open', function(fd) {
       file.pipe(fileStream);
-      file.on('end', function (err) {
+      file.on('end', function(err) {
         if (err) {
           return reject(err);
         } else {
@@ -50,11 +50,11 @@ function processUpload(resource, file) {
 }
 
 /**
-* Deletes all the files of the given resource
-* @param resource
-*/
+ * Deletes all the files of the given resource
+ * @param resource
+ */
 function deleteAll(resource) {
-  return new Promise(async function (resolve, reject) {
+  return new Promise(async function(resolve, reject) {
 
     if (config.uploads.provider !== 'atlas') {
       return reject({
@@ -62,19 +62,24 @@ function deleteAll(resource) {
       });
     }
 
-    log.warn({resource}, 'Deleting all files');
-    fs.readdir(path.join(config.uploads.folder, resource), async function (err, items) {
+    log.warn({
+      resource
+    }, 'Deleting all files');
+    fs.readdir(path.join(config.uploads.folder, resource), async function(err, items) {
       if (err) {
         reject(err);
       }
       await Promise.all(items.map(fileName =>
         fs.unlink(path.join(path.join(config.uploads.folder, resource), fileName))));
-        resolve();
+      resolve();
     });
   });
 }
 
 /**
-* Exports
-*/
-export {processUpload, deleteAll};
+ * Exports
+ */
+export {
+  processUpload,
+  deleteAll
+};

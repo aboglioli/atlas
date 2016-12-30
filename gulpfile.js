@@ -12,7 +12,10 @@ gulp.task('lint', function() {
 
 gulp.task('prettify', function() {
   gulp.src('src/**/*.js')
-    .pipe(prettify())
+  .pipe(prettify({
+  indent_size: 2,
+  indent_char: ' '
+  }))
     .pipe(prettify.reporter())
     .pipe(gulp.dest('./src'));
 });

@@ -1,2 +1,5 @@
 import logger from '../../logging';
-export default logger.child({module: 'resources', resource: 'account'});
+export default logger.child({
+  module: 'resources',
+  resource: 'account'
+});

@@ -1,3 +1,3 @@
 export default function handle() {
-    console.log('Available scripts: uploadImages, clearImages');
+  console.log('Available scripts: uploadImages, clearImages');
 }

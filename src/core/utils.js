@@ -12,18 +12,18 @@ import crypto from 'crypto';
  *     - If false, fail if there are keys not present in the keys array
  */
 function hasKeys(obj, keys, ignoreUnknown) {
-    if (!obj) {
-        return false;
-    }
-    let objectKeys = Object.keys(obj);
-    let validateFn = function (item) {
-        return keys.indexOf(item) !== -1;
-    };
-    if (ignoreUnknown) {
-        return objectKeys.filter(validateFn).length === keys.length;
-    } else {
-        return objectKeys.length === keys.length && objectKeys.every(validateFn);
-    }
+  if (!obj) {
+    return false;
+  }
+  let objectKeys = Object.keys(obj);
+  let validateFn = function(item) {
+    return keys.indexOf(item) !== -1;
+  };
+  if (ignoreUnknown) {
+    return objectKeys.filter(validateFn).length === keys.length;
+  } else {
+    return objectKeys.length === keys.length && objectKeys.every(validateFn);
+  }
 }
 
 /**
@@ -32,13 +32,13 @@ function hasKeys(obj, keys, ignoreUnknown) {
  * @param keys - the array of keys
  */
 function hasValue(obj, keys) {
-    let result = true;
-    keys.forEach(function (key) {
-        if (!obj.hasOwnProperty(key) || obj[key] == '') {
-            result = false;
-        }
-    });
-    return result;
+  let result = true;
+  keys.forEach(function(key) {
+    if (!obj.hasOwnProperty(key) || obj[key] == '') {
+      result = false;
+    }
+  });
+  return result;
 }
 
 /**
@@ -47,22 +47,22 @@ function hasValue(obj, keys) {
  * @returns {string}
  */
 function getRandomString(len) {
-    if (len <= 0) {
-        throw new Error('Length must be a positive integer');
-    }
-    let possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = crypto.randomBytes(Math.floor(len/2)).toString('hex');
-    for(let i=0; i < len%2; i++) {
-        result += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
-    }
-    return result;
+  if (len <= 0) {
+    throw new Error('Length must be a positive integer');
+  }
+  let possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = crypto.randomBytes(Math.floor(len / 2)).toString('hex');
+  for (let i = 0; i < len % 2; i++) {
+    result += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+  }
+  return result;
 }
 
 /**
  * Exports
  */
 export {
-    hasKeys,
-    hasValue,
-    getRandomString
+  hasKeys,
+  hasValue,
+  getRandomString
 };

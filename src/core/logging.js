@@ -1,2 +1,4 @@
 import logger from '../logging';
-export default logger.child({module: 'core'});
+export default logger.child({
+  module: 'core'
+});

@@ -2,8 +2,8 @@
  * ENUM of custom Errors and Exceptions
  */
 const ErrorName = {
-    PERMISSION_DENIED: 'PermissionDenied',
-    VALIDATION_ERROR: 'ValidationError'
+  PERMISSION_DENIED: 'PermissionDenied',
+  VALIDATION_ERROR: 'ValidationError'
 };
 
 /**
@@ -11,12 +11,12 @@ const ErrorName = {
  * (e.g. check if SKU is being used) fail and should be propagated to the API response
  */
 class ValidationError extends Error {
-    constructor(param, message) {
-        super(message);
-        this.name = ErrorName.VALIDATION_ERROR;
-        this.param = param;
-        this.message = message;
-    }
+  constructor(param, message) {
+    super(message);
+    this.name = ErrorName.VALIDATION_ERROR;
+    this.param = param;
+    this.message = message;
+  }
 }
 
 /**
@@ -24,14 +24,18 @@ class ValidationError extends Error {
  * whatever he is attempting to do (e.g. fetching a checkout that does not belong to him)
  */
 class PermissionDenied extends Error {
-    constructor(message) {
-        super(message);
-        this.name = ErrorName.PERMISSION_DENIED;
-        this.message = message;
-    }
+  constructor(message) {
+    super(message);
+    this.name = ErrorName.PERMISSION_DENIED;
+    this.message = message;
+  }
 }
 
 /**
  * Exports
  */
-export {ErrorName, ValidationError, PermissionDenied};
+export {
+  ErrorName,
+  ValidationError,
+  PermissionDenied
+};

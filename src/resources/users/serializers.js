@@ -8,24 +8,26 @@ import Joi from 'joi';
  */
 class UserSerializer {
 
-    static schema = {
-        id: Joi.string(),
-        name: Joi.string(),
-        email: Joi.string().email(),
-        status: Joi.string(),
-        createdAt: Joi.date()
-    };
+  static schema = {
+    id: Joi.string(),
+    name: Joi.string(),
+    email: Joi.string().email(),
+    status: Joi.string(),
+    createdAt: Joi.date()
+  };
 
-    constructor(user) {
-        this.user = Object.assign({}, user);
-    }
+  constructor(user) {
+    this.user = Object.assign({}, user);
+  }
 
-    async serialize() {
-        return this.user;
-    }
+  async serialize() {
+    return this.user;
+  }
 }
 
 /**
  * Exports
  */
-export {UserSerializer};
+export {
+  UserSerializer
+};

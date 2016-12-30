@@ -272,14 +272,14 @@ class Product {
         let productsToUpdate = products.filter(function (product) {
             return SKUsToUpdate.indexOf(product.sku) !== -1;
         });
-        await * productsToUpdate.map(product => {
+        await Promise.all(productsToUpdate.map(product => {
             this.table.filter({sku: product.sku}).update({
                 enabled: product.enabled,
                 pricing: product.pricing,
                 stock: product.stock,
                 updatedAt: new Date()
             }).run();
-        });
+        }));
         log.debug({SKUsToUpdate},'Updated');
 
         //

@@ -73,7 +73,7 @@ class OrdersHandler {
         let results = await Order.find(filters);
 
         // Serialize items
-        let serializedItems = await * results.items.map(order => new OrderSerializer(order).serialize({}));
+        let serializedItems = await Promise.all(results.items.map(order => new OrderSerializer(order).serialize({})));
 
         //
         // Return
@@ -149,7 +149,7 @@ class OrderIdHandler {
      * Return order with given ID
      */
     static async get(request, reply) {
-        
+
         // ID validation should have been done in route prerequisites
         let order = request.pre.order;
 
@@ -319,7 +319,7 @@ class SwitchPaymentsWebhookHandler {
             log.warn({orderId: request.params.orderId, query: request.query}, '[Switch Payments] Disabled');
             return reply().code(401);
         }
-        
+
         // Check if order ID exists and is in appropriate state (i.e. created or pending payment)
         let order = await Order.get(request.params.orderId);
         if (!order) {

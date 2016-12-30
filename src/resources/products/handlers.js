@@ -80,7 +80,7 @@ class ProductsHandler {
         }, enabled);
 
         // Return
-        let serializedItems = await * results.items.map(product => new ProductSerializer(product).serialize());
+        let serializedItems = await Promise.all(results.items.map(product => new ProductSerializer(product).serialize()));
         return reply({
             items: serializedItems,
             pagination: {

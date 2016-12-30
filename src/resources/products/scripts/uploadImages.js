@@ -128,7 +128,7 @@ async function processProduct(apiBaseURL, jwt, product) {
             let responseJSON = JSON.parse(body);
             if (!error && response.statusCode == 200 && responseJSON.items.length > 0) {
                 console.log('SKU %s in database --> Name: %s', product.sku, responseJSON.items[0].name.pt);
-                let uploadedImages = await * product.images.map(img => uploadImage(apiBaseURL, jwt, img));
+                let uploadedImages = await Promise.all(product.images.map(img => uploadImage(apiBaseURL, jwt, img)));
                 console.log('Uploaded images for %s', product.sku, uploadedImages);
                 await updateProduct(apiBaseURL, jwt, responseJSON.items[0], uploadedImages);
                 resolve();
@@ -202,7 +202,7 @@ async function handle(args) {
     //   c) Update product with paths of uploaded images
     //
     try {
-        await * products.map(product => processProduct(apiBaseURL, jwt, product));
+        await Promise.all(products.map(product => processProduct(apiBaseURL, jwt, product)));
     } catch (err) {
         console.log('Error processing SKUs', err);
     }

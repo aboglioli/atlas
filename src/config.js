@@ -1,2 +1,10 @@
 // Load config according to environment
-export default require('../config/' + process.env.NODE_ENV);
+
+/**
+ * ES6 modules and require can not be combined because the "export default ..."
+ * statements is transpiled to "module.default = ...".
+ * With require it's necessary to access de default property.
+ */
+const config = require('../config/' + process.env.NODE_ENV).default;
+
+export default config;

@@ -1,16 +1,19 @@
 import path from 'path';
 
+const defaultJwtKey = 'Q0pRP1qP3HyoJhvp+kRyTeEUgFuGAoSdMywkkF386JQ=';
+const defaultDatabaseHost = '172.17.0.2';
+
 export default {
     app: {
         host: '0.0.0.0',
         port: 8000,
-        jwtKey: process.env.JWT_KEY,
+        jwtKey: process.env.JWT_KEY || defaultJwtKey,
         defaultCurrency: 'EUR'
     },
     database: {
         servers: [
             {
-                host: process.env.DB_PORT_28015_TCP_ADDR || 'localhost',
+                host: process.env.DB_PORT_28015_TCP_ADDR || defaultDatabaseHost,
                 port: process.env.DB_PORT_28015_TCP_PORT || 28015
             }
         ],

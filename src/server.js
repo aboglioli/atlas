@@ -113,6 +113,10 @@ server.register(require('hapi-auth-jwt2'), function(err) {
         algorithms: ['HS256']
       }
     });
+
+    server.auth.default('jwt');
+
+    server.route(routes);
   }
 });
 
@@ -134,7 +138,6 @@ server.route({
   }
 });
 
-server.route(routes);
 
 // Serve Static Files
 // *** WARNING ***

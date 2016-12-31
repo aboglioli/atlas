@@ -7,3 +7,5 @@ uploads
 
 build
 npm-debug.log
+data
+rethinkdb_data

@@ -114,7 +114,7 @@ server.register(require('hapi-auth-jwt2'), function(err) {
       }
     });
 
-    server.auth.default('jwt');
+    // server.auth.default('jwt');
 
     server.route(routes);
   }

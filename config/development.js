@@ -1,6 +1,6 @@
 import path from 'path';
 
-const defaultJwtKey = 'Q0pRP1qP3HyoJhvp+kRyTeEUgFuGAoSdMywkkF386JQ=';
+const defaultJwtKey = 'ZJhzaoUG94T89BzEkAgn1iI4qsREL7MVmaFmyFz74Ng=';
 const defaultDatabaseHost = '172.17.0.2';
 
 export default {

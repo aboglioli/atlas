@@ -15,7 +15,7 @@
   },
   "author": "Alan Boglioli <alan.boglioli@gmail.com>",
   "dependencies": {
-    "babel": "6.23.0",
+    "babel-polyfill": "^6.23.0",
     "bcrypt": "^1.0.1",
     "bunyan": "1.8.9",
     "fast-csv": "2.4.0",

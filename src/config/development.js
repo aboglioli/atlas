@@ -3,7 +3,7 @@ import path from 'path';
 const defaultJwtKey = 'ZJhzaoUG94T89BzEkAgn1iI4qsREL7MVmaFmyFz74Ng=';
 const defaultDatabaseHost = '172.17.0.2';
 
-module.exports = {
+export default {
     app: {
         host: '0.0.0.0',
         port: 8000,

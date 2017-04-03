@@ -1,4 +1,9 @@
 /**
+ * Polyfill
+ */
+import 'babel-polyfill';
+
+/**
  * Imports
  */
 import Hapi from 'hapi';

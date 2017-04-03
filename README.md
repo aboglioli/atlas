@@ -69,11 +69,6 @@ In order to access Storefront's Admin and perform certain API calls, an Administ
 2. In a browser, navigate to `http://localhost:8080/#dataexplorer`
 3. Run the following query `r.db('atlas').table('Users').filter({email: '{YOUR_USER_EMAIL}'}).update({status: 'active', scope: ['admin']});` (don't forget to replace `{YOUR_USER_EMAIL}` with the email address of the account you created)
 
-## TODO
-- Don't use decorators because babel is not supporting them anymore (only
-  through a plugin).
-- 
-
 ## Contacts
 Comments, suggestions, doubts, flames, /dev/random, etc...
 - **alan.boglioli@gmail.com** (Me)

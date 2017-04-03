@@ -75,7 +75,10 @@ export default [{
           'authorization': Joi.string().optional()
         }).unknown(),
         params: {
-          cartId: Joi.string().required().description('the id for the cart'),
+          cartId: Joi.string().required().description('the id for the cart')
+        },
+        query: {
+          accessToken: Joi.string().optional()
         }
       },
       response: {
@@ -102,7 +105,7 @@ export default [{
           'authorization': Joi.string().optional()
         }).unknown(),
         params: {
-          cartId: Joi.string().required().description('the id for the cart'),
+          cartId: Joi.string().required().description('the id for the cart')
         }
       },
       response: {

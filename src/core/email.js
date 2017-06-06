@@ -47,7 +47,7 @@ function sendEmail(from, to, subject, text, html) {
   return new Promise((resolve, reject) => {
     log.debug({
       mailgun: config.mailgun,
-      arguments
+      from, to, subject, text, html
     }, 'Send email');
     request.post({
       url: `https://api.mailgun.net/v3/${config.mailgun.domain}/messages`,

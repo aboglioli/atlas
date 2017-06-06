@@ -1,30 +1,17 @@
-FROM debian:jessie
+FROM node:latest
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    nano \
-    supervisor
+RUN mkdir /src
 
-# Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
-RUN apt-get install -y nodejs
+RUN npm install nodemon -g
 
-# Improve cache invalidations by only running npm if requirements have indeed changed
-WORKDIR /app
-COPY package.json /app/
+WORKDIR /src
+ADD package.json /src/package.json
 RUN npm install
 
-# Supervisor settings
-COPY docker/supervisord.conf /etc/supervisor/conf.d/atlas.conf
+RUN ls -l
 
-# Application source code
-COPY config/ /app/config
-COPY src/ /app/src
-COPY index.js /app/
-COPY scripts.js /app/
+ADD nodemon.json /src/nodemon.json
 
-# Expose application server port
-EXPOSE 8000
+EXPOSE 3000
 
-CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
+CMD npm start

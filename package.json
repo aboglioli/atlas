@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon index.js --exec babel-node",
+    "start": "nodemon app/index.js --exec babel-node",
     "build": "NODE_ENV=development babel src -d build",
     "serve": "NODE_ENV=development node build/server.js"
   },

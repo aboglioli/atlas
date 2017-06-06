@@ -1,12 +1,12 @@
 import path from 'path';
 
 const defaultJwtKey = 'ZJhzaoUG94T89BzEkAgn1iI4qsREL7MVmaFmyFz74Ng=';
-const defaultDatabaseHost = '172.17.0.2';
+const defaultDatabaseHost = 'rethinkdb';
 
 export default {
     app: {
         host: '0.0.0.0',
-        port: 8000,
+        port: 3000,
         jwtKey: process.env.JWT_KEY || defaultJwtKey,
         defaultCurrency: 'EUR'
     },
